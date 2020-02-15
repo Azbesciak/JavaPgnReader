@@ -25,6 +25,10 @@ public class ObservableChessGame extends Observable implements ChessGame {
     @Override
     public void makeMove(Move move) {
         chessGame.makeMove(move);
+        onMoveMade();
+    }
+
+    private void onMoveMade() {
         setChanged();
         notifyObservers(ACTION_NEW_MOVE);
     }
@@ -32,6 +36,7 @@ public class ObservableChessGame extends Observable implements ChessGame {
     @Override
     public void makeMove(Move move, int fromX, int fromY, int toX, int toY) {
         chessGame.makeMove(move, fromX, fromY, toX, toY);
+        onMoveMade();
     }
 
     @Override
